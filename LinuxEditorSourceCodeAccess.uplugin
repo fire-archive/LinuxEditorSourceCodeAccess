@@ -1,19 +1,19 @@
 {
 	"FileVersion" : 3,
-	"FriendlyName" : "Sensible Editor Source Code Access",
+	"FriendlyName" : "Linux Editor Source Code Access",
 	"Version" : 1,
 	"VersionName" : "1.0",
 	"CreatedBy" : "K. Ernest 'iFire' Lee",
-	"CreatedByURL" : "https://github.com/fire/SensibleEditorSourceCodeAccess.git",
+	"CreatedByURL" : "https://github.com/fire/LinuxEditorSourceCodeAccess.git",
 	"EngineVersion" : "4.3.0",
-	"Description" : "Allows access to source code with Sensible Editor.",
+	"Description" : "Allows access to source code with the default Linux handler.",
 	"Category" : "Developer.Source Code Access",
 	"EnabledByDefault" : true,
 	
 	"Modules" :
 	[
 		{
-			"Name" : "SensibleEditorSourceCodeAccess",
+			"Name" : "LinuxEditorSourceCodeAccess",
 			"Type" : "Developer",
 			"WhitelistPlatforms" : [ "Linux" ],
 			"LoadingPhase" : "PreDefault"

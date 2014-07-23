@@ -19,20 +19,17 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  */
 
-#include "SensibleEditorSourceCodeAccessPrivatePCH.h"
-#include "Runtime/Core/Public/Features/IModularFeatures.h"
-#include "SensibleEditorSourceCodeAccessModule.h"
+#pragma once
 
-IMPLEMENT_MODULE( FXCodeSourceCodeAccessModule, SensibleEditorSourceCodeAccess );
+#include "LinuxEditorSourceCodeAccessor.h"
 
-void FXCodeSourceCodeAccessModule::StartupModule()
+class FXCodeSourceCodeAccessModule : public IModuleInterface
 {
-	// Bind our source control provider to the editor
-	IModularFeatures::Get().RegisterModularFeature(TEXT("SourceCodeAccessor"), &SensibleEditorSourceCodeAccessor );
-}
+public:
+	/** IModuleInterface implementation */
+	virtual void StartupModule() override;
+	virtual void ShutdownModule() override;
 
-void FXCodeSourceCodeAccessModule::ShutdownModule()
-{
-	// unbind provider from editor
-	IModularFeatures::Get().UnregisterModularFeature(TEXT("SourceCodeAccessor"), &SensibleEditorSourceCodeAccessor);
-}
+private:
+	FXCodeSourceCodeAccessor LinuxEditorSourceCodeAccessor;
+};

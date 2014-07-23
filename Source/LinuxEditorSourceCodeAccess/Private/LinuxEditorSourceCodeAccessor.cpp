@@ -19,10 +19,10 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  */
 
-#include "SensibleEditorSourceCodeAccessPrivatePCH.h"
-#include "SensibleEditorSourceCodeAccessor.h"
+#include "LinuxEditorSourceCodeAccessPrivatePCH.h"
+#include "LinuxEditorSourceCodeAccessor.h"
 
-#define LOCTEXT_NAMESPACE "SensibleEditorSourceCodeAccessor"
+#define LOCTEXT_NAMESPACE "LinuxEditorSourceCodeAccessor"
 
 bool FXCodeSourceCodeAccessor::CanAccessSourceCode() const
 {
@@ -31,17 +31,17 @@ bool FXCodeSourceCodeAccessor::CanAccessSourceCode() const
 
 FName FXCodeSourceCodeAccessor::GetFName() const
 {
-  return FName("SensibleEditorSourceCodeAccessor");
+  return FName("LinuxEditorSourceCodeAccessor");
 }
 
 FText FXCodeSourceCodeAccessor::GetNameText() const 
 {
-  return LOCTEXT("SensibleEditorDisplayName", "Sensible Editor");
+  return LOCTEXT("LinuxEditorDisplayName", "Linux Editor");
 }
 
 FText FXCodeSourceCodeAccessor::GetDescriptionText() const
 {
-  return LOCTEXT("SensibleEditorDisplayDesc", "Open source code files with Sensible Editor");
+  return LOCTEXT("LinuxEditorDisplayDesc", "Open source code files with the default Linux editor");
 }
 
 bool FXCodeSourceCodeAccessor::OpenSolution()

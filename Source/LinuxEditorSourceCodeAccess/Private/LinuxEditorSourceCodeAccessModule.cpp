@@ -19,19 +19,20 @@ LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.  */
 
-namespace UnrealBuildTool.Rules
+#include "LinuxEditorSourceCodeAccessPrivatePCH.h"
+#include "Runtime/Core/Public/Features/IModularFeatures.h"
+#include "LinuxEditorSourceCodeAccessModule.h"
+
+IMPLEMENT_MODULE( FXCodeSourceCodeAccessModule, LinuxEditorSourceCodeAccess );
+
+void FXCodeSourceCodeAccessModule::StartupModule()
 {
-	public class SensibleEditorSourceCodeAccess : ModuleRules
-	{
-                 public SensibleEditorSourceCodeAccess(TargetInfo Target)
-		 {
-		 	PrivateDependencyModuleNames.AddRange(
-                                new string[]
-				{
-					"Core",
-					"SourceCodeAccess"
-				}
-			);
-		}
-	}
+	// Bind our source control provider to the editor
+	IModularFeatures::Get().RegisterModularFeature(TEXT("SourceCodeAccessor"), &LinuxEditorSourceCodeAccessor );
+}
+
+void FXCodeSourceCodeAccessModule::ShutdownModule()
+{
+	// unbind provider from editor
+	IModularFeatures::Get().UnregisterModularFeature(TEXT("SourceCodeAccessor"), &LinuxEditorSourceCodeAccessor);
 }
